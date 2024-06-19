@@ -20,4 +20,7 @@ return {
   { import = "astrocommunity.code-runner.sniprun" },
   -- editing support
   { import = "astrocommunity.editing-support.neogen" },
+
+  -- markdown & latex
+  { import = "astrocommunity.markdown-and-latex.peek-nvim" },
 }
