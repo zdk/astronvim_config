@@ -82,7 +82,7 @@ return {
     opts = {
       -- go = "go",
       disable_defaults = true,
-      diagnostics = false,
+      -- diagnostics = false,
       -- diagnostic = { -- set diagnostic to false to disable vim.diagnostic.config setup,
       --   -- true: default nvim setup
       --   underline = true,
@@ -90,6 +90,14 @@ return {
       --   signs = { "", "", "", "" }, -- set to true to use default signs, an array of 4 to specify custom signs
       --   update_in_insert = false,
       -- },
+      diagnostic = { -- set diagnostic to false to disable vim.diagnostic setup
+        hdlr = true, -- hook lsp diag handler and send diag to quickfix
+        underline = true,
+        -- virtual text setup
+        virtual_text = { spacing = 0, prefix = "■" },
+        signs = true,
+        update_in_insert = false,
+      },
     },
     config = function() require("go").setup() end,
     event = { "CmdlineEnter" },

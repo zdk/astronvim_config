@@ -9,10 +9,15 @@ return {
   "AstroNvim/astrocommunity",
   -- vim motion
   { import = "astrocommunity.motion.mini-surround" },
+  -- pack (base)
+  { import = "astrocommunity.pack.html-css" },
   -- pack
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.ruby" },
-  -- import/override with your plugins folder
+  -- code runner
+  { import = "astrocommunity.code-runner.sniprun" },
+  -- editing support
+  { import = "astrocommunity.editing-support.neogen" },
 }
