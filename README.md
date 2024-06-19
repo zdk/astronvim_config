@@ -1,6 +1,28 @@
 # AstroNvim Config
 
-Just my AstroNvim v4+ config
+Just my AstroNvim v4+ config.
+
+## Overview
+
+#### motion
+
+- mini-surround
+
+#### pack
+
+- html-css
+- lua
+- docker
+- go
+- ruby
+
+#### code runner
+
+- sniprun
+
+#### editing support
+
+- neogen
 
 ## 🛠️ Installation
 
