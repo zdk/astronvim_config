@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
@@ -81,5 +81,73 @@ return {
         Rule("a", "a", "-vim")
       )
     end,
+  },
+  {
+    "copilot.lua",
+    opts = {
+      suggestion = {
+        keymap = {
+          accept = "<C-l>",
+          accept_word = false,
+          accept_line = false,
+          next = "<C-.>",
+          prev = "<C-,>",
+          dismiss = "<C/>",
+        },
+      },
+    },
+  },
+  {
+    "b0o/SchemaStore.nvim",
+    lazy = true,
+    dependencies = {
+      {
+        "AstroNvim/astrolsp",
+        optional = true,
+        ---@type AstroLSPOpts
+        opts = {
+          ---@diagnostic disable: missing-fields
+          config = {
+            yamlls = {
+              on_new_config = function(config)
+                config.settings.yaml.schemas = vim.tbl_deep_extend(
+                  "force",
+                  config.settings.yaml.schemas or {},
+                  require("schemastore").yaml.schemas()
+                )
+              end,
+              -- settings = { yaml = { schemaStore = { enable = true, url = "" } } },
+              settings = {
+                schemaStore = {
+                  enable = true,
+                  url = "https://www.schemastore.org/api/json/catalog.json",
+                },
+                yaml = {
+                  format = {
+                    enable = true,
+                    singleQuote = true,
+                    printWidth = 120,
+                  },
+                  hover = true,
+                  completion = true,
+                  validate = true,
+                  schemas = {
+                    kubernetes = "*.yaml",
+                    ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+                    ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+                    ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+                    ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+                    ["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
+                    ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+                    ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+                    ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
 }
