@@ -6,9 +6,23 @@
 ---@type LazySpec
 return {
 
-  -- == Examples of Adding Plugins ==
-
-  "andweeb/presence.nvim",
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    config = function()
+      require("catppuccin").setup {
+        flavour = "latte",
+        integrations = {
+          treesitter = true,
+          lsp_trouble = true,
+          telescope = true,
+          which_key = true,
+        },
+      }
+      vim.cmd.colorscheme "catppuccin-latte"
+    end,
+  },
+  { "andweeb/presence.nvim" },
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
